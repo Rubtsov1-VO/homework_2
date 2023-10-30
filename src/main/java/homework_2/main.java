@@ -115,7 +115,7 @@ class Books {
         return author;
     }
 
-    public Publisher getString() {
+    public Publisher getPublisher() {
         return pub;
     }
 
@@ -194,22 +194,21 @@ class Books {
     }
 
     public void print() {
-        System.out.println(name);
-        System.out.println(year);
-        System.out.println(pub);
-        if (authors != null && !name.isEmpty()) {
-            System.out.println(Arrays.toString(authors));
+        if(getAuthor()==null && authors!=null){
+            System.out.println("Название книги " + getName() + ", автор книги: " + Arrays.toString(getAuthors()) + ", издатель книги: " + getPublisher().getNamePub() + ", город издания: " + getPublisher().getCity() + ", год издания: " + getYear());
+
+        }else if (getAuthor()!=null){
+            System.out.println("Название книги " + getName() + ", автор книги: " + getAuthor() + ", издатель книги: " + getPublisher().getNamePub() + ", город издания: " + getPublisher().getCity() + ", год издания: " + getYear());
+        }else {
+            System.out.println("Название книги " + getName()  + ", издатель книги: " + getPublisher().getNamePub() + ", город издания: " + getPublisher().getCity() + ", год издания: " + getYear());
 
         }
-    }
 
-    public String toString() {
-        return "name = " + name + ", publisher = " + pub + ", year = " + year + ", authors = " + authors + "]";
     }
 
     public static void printAll(Books... args) {
         for (Books arg : args) {
-            System.out.println(arg);
+            arg.print();
         }
     }
 }
